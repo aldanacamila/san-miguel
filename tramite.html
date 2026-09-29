@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,200..400,0,0&display=swap" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<title>Trámite · Municipalidad de San Miguel</title>
+</head>
+<body data-page="tramite">
+
+<div id="app-header"></div>
+<div id="app-a11y"></div>
+
+<main class="container py-4" style="max-width:640px">
+  <a href="index.html" class="d-inline-block mb-3 small text-secondary">← Volver</a>
+  <div class="card text-center p-4">
+    <h1 class="h3" id="tramite-titulo"></h1>
+    <div><button class="btn btn-sm btn-outline-secondary rounded-pill mb-3 d-inline-flex align-items-center gap-1" data-action="leer-voz"><span class="material-symbols-outlined align-middle" aria-hidden="true" style="font-size:1.1rem">volume_up</span> Leer en voz alta</button></div>
+    <p class="text-secondary" id="tramite-texto"></p>
+    <div><a href="index.html" class="btn btn-primary">Entendido</a></div>
+  </div>
+</main>
+
+<div id="app-footer"></div>
+<div id="app-floating"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/accesibilidad.js"></script>
+<script src="js/asistente.js"></script>
+<script src="js/tramite.js"></script>
+</body>
+</html>

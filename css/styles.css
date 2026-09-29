@@ -1,0 +1,246 @@
+/* ==========================================================================
+   Municipalidad de San Miguel — Estilos propios (sobre Bootstrap 5.3)
+   Índice:
+   1. Variables / tema            6. Programas y servicios
+   2. Base y accesibilidad        7. Guía de trámites, Eventos (carrusel), Noticias
+   3. Componentes Bootstrap       8. Footer
+   4. Navbar y barra a11y         9. Modo Simple
+   5. Home: buscador, hero, accesos   10. Flotantes, asistente, tabbar     11. Juego
+   ========================================================================== */
+
+/* 1. VARIABLES / TEMA ------------------------------------------------------ */
+:root {
+  --sm-gray: #4E4E4E;
+  --sm-gray-dark: #3A3A3A;
+  --sm-blue: #1CADE4;
+  --sm-blue-dark: #0E8FC0;
+  --sm-blue-bar: #1B9FD8;
+  --sm-card-bg: #F4F3F3;      /* fondo de los contenedores de programas */
+  --sm-fs: 1;                 /* factor de tamaño de letra (js/accesibilidad.js) */
+
+  --bs-primary: var(--sm-blue);
+  --bs-primary-rgb: 28, 173, 228;
+  --bs-link-color: var(--sm-blue-dark);
+  --bs-border-radius: .5rem;
+}
+[data-bs-theme="dark"] {
+  --bs-body-bg: #14171A;
+  --bs-tertiary-bg: #1D2126;
+  --sm-card-bg: #1D2126;
+}
+[data-contrast="high"] {
+  --sm-blue: #003C82; --sm-blue-dark: #002450; --sm-blue-bar: #003C82;
+  --sm-gray: #000; --sm-gray-dark: #000; --sm-card-bg: #fff;
+  --bs-body-color: #000; --bs-secondary-color: #000; --bs-border-color: #000; --bs-tertiary-bg: #fff;
+}
+[data-contrast="high"] .card,
+[data-contrast="high"] .sm-portal,
+[data-contrast="high"] .sm-prog,
+[data-contrast="high"] .sm-event,
+[data-contrast="high"] .sm-simple-card,
+[data-contrast="high"] .a11y-bar .btn { border: 2px solid #000 !important; }
+[data-contrast="high"] .sm-hero-slide { background: #003C82 !important; }
+[data-contrast="high"] .sm-safety { background: #fff; border: 2px solid #000; }
+
+/* 2. BASE Y ACCESIBILIDAD -------------------------------------------------- */
+html { font-size: calc(16px * var(--sm-fs)); scroll-behavior: smooth; }
+body { font-family: 'Roboto', system-ui, sans-serif; }
+h1, h2, h3 { font-weight: 700; }
+:focus-visible { outline: 3px solid #FFB300 !important; outline-offset: 2px; }
+
+/* Íconos Google Material Symbols (Outlined, trazo fino) */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal; font-style: normal; font-size: 1.5rem; line-height: 1;
+  letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap;
+  direction: ltr; -webkit-font-smoothing: antialiased; user-select: none; vertical-align: middle;
+}
+
+/* 3. COMPONENTES BOOTSTRAP ------------------------------------------------- */
+.btn-primary {
+  --bs-btn-bg: var(--sm-blue); --bs-btn-border-color: var(--sm-blue);
+  --bs-btn-hover-bg: var(--sm-blue-dark); --bs-btn-hover-border-color: var(--sm-blue-dark);
+  --bs-btn-active-bg: var(--sm-blue-dark); --bs-btn-active-border-color: var(--sm-blue-dark);
+  --bs-btn-color: #fff; --bs-btn-hover-color: #fff; --bs-btn-active-color: #fff;
+  font-weight: 700; border-radius: 20px;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--sm-blue-dark); --bs-btn-border-color: var(--sm-blue);
+  --bs-btn-hover-bg: var(--sm-blue); --bs-btn-hover-border-color: var(--sm-blue);
+  font-weight: 700; border-radius: 20px;
+}
+.text-sm-blue { color: var(--sm-blue) !important; }
+.text-sm-blue-dark { color: var(--sm-blue-dark) !important; }
+
+/* 4. NAVBAR (limpio, estilo zarate.gob.ar) Y BARRA A11Y -------------------- */
+.sm-header { background: var(--bs-body-bg); box-shadow: 0 1px 0 var(--bs-border-color); z-index: 1040; }
+.sm-brand-txt { line-height: 1.1; }
+.sm-brand-txt small { display: block; font-size: .68rem; font-weight: 500; letter-spacing: .05em; color: var(--sm-gray); }
+.sm-brand-txt strong { font-size: 1.1rem; font-weight: 800; letter-spacing: .02em; color: var(--sm-blue); }
+.sm-header .nav-link, .sm-header .dropdown-item {
+  font-size: .82rem; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--bs-body-color);
+}
+.sm-header .nav-link { padding: .9rem .85rem; position: relative; }
+.sm-header .nav-link:hover, .sm-header .nav-link.show { color: var(--sm-blue-dark); }
+@media (min-width: 992px) {
+  .sm-header .nav-link::after { content: ''; position: absolute; left: .85rem; right: .85rem; bottom: .55rem; height: 2px; background: var(--sm-blue); transform: scaleX(0); transition: transform .2s; border: 0; margin: 0; }
+  .sm-header .nav-link:hover::after, .sm-header .nav-link.show::after { transform: scaleX(1); }
+  .sm-header .dropdown-toggle::after { display: none; }
+  .sm-header .dropdown:hover > .dropdown-menu { display: block; margin-top: 0; }
+}
+.sm-header .dropdown-menu { border: 0; border-radius: 0 0 8px 8px; box-shadow: 0 12px 28px rgba(0,0,0,.14); padding: .5rem 0; min-width: 260px; }
+.sm-header .dropdown-item { text-transform: none; letter-spacing: 0; font-size: .9rem; padding: .45rem 1.2rem; white-space: normal; }
+.sm-header .dropdown-item:hover { background: rgba(28,173,228,.1); color: var(--sm-blue-dark); }
+.sm-header .dropdown-header { text-transform: uppercase; font-size: .72rem; font-weight: 700; letter-spacing: .06em; color: var(--sm-blue-dark); }
+@media (min-width: 992px) { .sm-dd-2col { columns: 2; min-width: 520px; } .sm-dd-2col li { break-inside: avoid; } }
+.sm-contact { font-size: .82rem; letter-spacing: .05em; padding: .5rem 1.2rem; }
+.sm-icon-btn { border: 0; color: var(--bs-body-color); padding: .4rem; }
+
+.a11y-bar { background: var(--bs-tertiary-bg); border-bottom: 1px solid var(--bs-border-color); font-size: .82rem; }
+.a11y-bar .btn { font-weight: 700; }
+.a11y-bar .btn .material-symbols-outlined { font-size: 1.1rem; }
+.a11y-bar .btn.active { background: var(--sm-blue); color: #fff; border-color: var(--sm-blue); }
+
+.sm-announce { background: var(--sm-blue-bar); color: #fff; font-weight: 700; font-size: .9rem; }
+
+/* 5. HOME: BUSCADOR, HERO, ACCESOS ---------------------------------------- */
+.sm-search { max-width: 700px; }
+.sm-searchbar { border: 1px solid var(--bs-border-color); border-radius: 24px; background: var(--bs-body-bg); padding: .4rem .5rem .4rem 1.1rem; }
+.sm-searchbar input { border: 0; outline: 0; background: transparent; color: var(--bs-body-color); }
+.sm-searchbar .btn { width: 38px; height: 38px; border-radius: 50%; padding: 0; background: var(--bs-tertiary-bg); }
+
+.sm-hero-slide { min-height: 300px; display: flex; align-items: flex-end; background: linear-gradient(120deg, #0E8FC0, #1CADE4 60%, #5FD0EE); }
+.sm-hero-cap { color: #fff; padding: 1.6rem 3rem 4rem; max-width: 680px; }
+.sm-hero-cap h2 { color: #fff; font-size: 2.2rem; font-weight: 800; }
+
+/* Accesos principales: tarjetas blancas que "flotan" sobre el hero */
+.sm-portals-wrap { margin-top: -3rem; position: relative; z-index: 3; }
+.sm-portal {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem;
+  width: 100%; aspect-ratio: 1 / 1; padding: 1.2rem; text-align: center;
+  background: var(--bs-body-bg); color: var(--sm-gray); border: 2px solid transparent; border-radius: 6px;
+  box-shadow: 0 10px 26px rgba(0,0,0,.14); transition: transform .2s, border-color .2s;
+}
+.sm-portal:hover { transform: translateY(-4px); border-color: var(--sm-blue); }
+.sm-portal .material-symbols-outlined { font-size: 4.6rem; color: var(--sm-blue); font-variation-settings: 'wght' 300; }
+.sm-portal strong { font-size: 1.15rem; font-weight: 700; text-transform: uppercase; line-height: 1.2; }
+[data-bs-theme="dark"] .sm-portal { color: var(--bs-body-color); }
+
+.sm-section-title { font-size: 2.1rem; font-weight: 500; text-align: center; color: var(--sm-gray); margin-bottom: 2rem; }
+.sm-section-title b { font-weight: 900; }
+[data-bs-theme="dark"] .sm-section-title { color: var(--bs-body-color); }
+
+/* 6. PROGRAMAS Y SERVICIOS (barras con bloque de color + ícono) ------------ */
+.sm-prog {
+  display: flex; align-items: stretch; width: 100%; padding: 0; text-align: left; overflow: hidden;
+  background: var(--sm-card-bg); border: 0; border-radius: 4px; color: var(--sm-gray);
+  transition: box-shadow .2s, transform .2s;
+}
+.sm-prog:hover { box-shadow: 0 6px 16px rgba(0,0,0,.14); transform: translateY(-2px); }
+.sm-prog-ic { width: 100px; min-height: 100px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: #fff; }
+.sm-prog-ic .material-symbols-outlined { font-size: 3rem; font-variation-settings: 'wght' 300; }
+.sm-prog-label { padding: .8rem 1.4rem; font-weight: 500; font-size: 1.25rem; letter-spacing: .02em; text-transform: uppercase; display: flex; align-items: center; }
+[data-bs-theme="dark"] .sm-prog { color: var(--bs-body-color); }
+
+/* 7. GUÍA DE TRÁMITES, EVENTOS (CARRUSEL), NOTICIAS ------------------------ */
+.sm-guia { background: var(--sm-blue-bar); color: #fff; border-radius: 8px; }
+.sm-guia h2 { color: #fff; font-weight: 800; text-transform: uppercase; }
+.sm-guia .material-symbols-outlined { font-size: 5rem; font-variation-settings: 'wght' 300; }
+.sm-guia .btn { background: #fff; color: var(--sm-blue-dark); border-color: #fff; letter-spacing: .05em; }
+.sm-guia .btn:hover { background: var(--sm-gray-dark); color: #fff; border-color: var(--sm-gray-dark); }
+
+/* Carrusel de eventos (scroll-snap + botones prev/next) */
+.sm-events { position: relative; }
+.sm-events-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: .25rem; }
+.sm-events-track::-webkit-scrollbar { display: none; }
+.sm-event { flex: 0 0 calc((100% - 3rem) / 4); scroll-snap-align: start; border: 0; border-radius: 8px; overflow: hidden; color: #fff; text-align: left; display: flex; flex-direction: column; aspect-ratio: 4 / 5; padding: 1.3rem; position: relative; box-shadow: 0 6px 16px rgba(0,0,0,.14); }
+.sm-event::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,.55)); }
+.sm-event > * { position: relative; }
+.sm-event .sm-event-ic { font-size: 5.5rem; opacity: .9; margin: auto; font-variation-settings: 'wght' 200; }
+.sm-event .sm-pill { align-self: flex-start; background: rgba(255,255,255,.22); color: #fff; }
+.sm-event h3 { font-size: 1.15rem; font-weight: 700; color: #fff; margin: .6rem 0 .3rem; }
+.sm-event p { font-size: .85rem; margin: 0; color: rgba(255,255,255,.9); }
+@media (max-width: 991.98px) { .sm-event { flex-basis: calc((100% - 1rem) / 2); } }
+@media (max-width: 575.98px) { .sm-event { flex-basis: 82%; } }
+.sm-events-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--bs-body-bg); color: var(--sm-gray); box-shadow: 0 4px 12px rgba(0,0,0,.25); z-index: 2; display: flex; align-items: center; justify-content: center; }
+.sm-events-btn.prev { left: -14px; } .sm-events-btn.next { right: -14px; }
+[data-bs-theme="dark"] .sm-events-btn { color: var(--bs-body-color); }
+@media (max-width: 575.98px) { .sm-events-btn { display: none; } }
+
+.sm-news-img { height: 160px; display: flex; align-items: center; justify-content: center; color: #fff; }
+.sm-news-img .material-symbols-outlined { font-size: 3.6rem; font-variation-settings: 'wght' 300; }
+.sm-pill { font-size: .7rem; font-weight: 700; color: var(--sm-blue-dark); background: rgba(28,173,228,.13); border-radius: 20px; padding: .15rem .7rem; display: inline-block; text-transform: uppercase; letter-spacing: .03em; }
+
+/* 8. FOOTER (estructura de zarate.gob.ar) --------------------------------- */
+.sm-footer { background: var(--sm-gray-dark); color: rgba(255,255,255,.85); }
+.sm-foot-title { color: var(--sm-blue); font-weight: 700; letter-spacing: .06em; margin-bottom: 1rem; }
+.sm-foot-links li { margin-bottom: .5rem; }
+.sm-footer a { color: #fff; text-decoration: none; }
+.sm-footer a:hover { color: var(--sm-blue); }
+.sm-foot-link { font-weight: 600; }
+.sm-map { width: 100%; height: 220px; border: 0; border-radius: 8px; }
+.sm-foot-hr { border-color: rgba(255,255,255,.2); margin: 2rem 0; opacity: 1; }
+.sm-emg-item { display: flex; flex-direction: column; gap: .2rem; }
+.sm-emg-num { font-size: 1.9rem; font-weight: 800; line-height: 1; }
+.sm-emg-lbl { color: var(--sm-blue); font-weight: 700; text-transform: uppercase; font-size: .8rem; letter-spacing: .05em; }
+.sm-foot-bottom { background: rgba(0,0,0,.25); }
+
+/* 9. MODO SIMPLE ----------------------------------------------------------- */
+.solo-simple { display: none; }
+body.simple .solo-simple { display: block; }
+body.simple .solo-normal { display: none !important; }
+
+.sm-mic { width: 96px; height: 96px; border-radius: 50%; border: 0; background: var(--sm-gray-dark); color: #fff; }
+.sm-mic .material-symbols-outlined { font-size: 2.8rem; }
+.sm-simple-card { background: var(--bs-body-bg); border: 2px solid var(--bs-border-color); border-radius: 14px; padding: 1.4rem 1rem; width: 100%; color: var(--sm-blue-dark); }
+.sm-simple-card .material-symbols-outlined { font-size: 2.6rem; display: block; margin: 0 auto .4rem; }
+.sm-simple-sec { background: var(--bs-tertiary-bg); border: 0; border-radius: 12px; padding: 1rem; width: 100%; text-align: left; color: var(--sm-blue-dark); }
+.sm-safety { background: #FFF7E6; border: 1px solid #F0D48A; border-radius: 14px; color: #3A3A3A; }
+[data-bs-theme="dark"] .sm-safety { background: #2B2413; border-color: #6B5A22; color: #EDEFF2; }
+
+/* 10. FLOTANTES, ASISTENTE, TABBAR ---------------------------------------- */
+.sm-mascot { position: fixed; right: 12px; bottom: 12px; z-index: 1030; background: none; border: 0; padding: 0; filter: drop-shadow(0 6px 10px rgba(0,0,0,.25)); }
+.sm-mascot img { display: block; height: auto; }
+.sm-fab { position: fixed; right: 30px; width: 56px; height: 56px; border-radius: 50%; border: 0; color: #fff; box-shadow: 0 6px 16px rgba(0,0,0,.25); z-index: 1030; }
+.sm-fab .material-symbols-outlined { font-size: 1.8rem; }
+.sm-fab-assistant { bottom: 116px; background: var(--sm-gray-dark); }
+.sm-mascot-tip { position: fixed; right: 20px; bottom: 182px; max-width: 230px; z-index: 1030; background: var(--bs-body-bg); border: 1px solid var(--bs-border-color); border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,.15); }
+
+.ao-mic-wrap { position: relative; width: 110px; height: 110px; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; }
+.ao-ring { position: absolute; border-radius: 50%; border: 2px solid var(--sm-blue); opacity: 0; }
+.ao-mic-wrap.listening .r1 { animation: aoPulse 1.6s ease-out infinite; }
+.ao-mic-wrap.listening .r2 { animation: aoPulse 1.6s ease-out infinite .5s; }
+@keyframes aoPulse { 0% { width: 70px; height: 70px; opacity: .6; } 100% { width: 110px; height: 110px; opacity: 0; } }
+.ao-mic { width: 70px; height: 70px; border-radius: 50%; border: 0; background: var(--sm-blue); color: #fff; z-index: 1; }
+.ao-mic .material-symbols-outlined { font-size: 2rem; }
+.ao-mic-wrap.listening .ao-mic { background: var(--sm-blue-dark); }
+
+.sm-tabbar { background: var(--bs-body-bg); border-top: 1px solid var(--bs-border-color); padding: .5rem 0 calc(.5rem + env(safe-area-inset-bottom, 0px)); z-index: 1030; }
+.sm-tabbar .tab { flex: 1; background: none; border: 0; font-size: .62rem; color: var(--bs-secondary-color); text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: .15rem; }
+.sm-tabbar .tab .material-symbols-outlined { font-size: 1.4rem; }
+.sm-tabbar .tab.active { color: var(--sm-blue-dark); }
+@media (max-width: 767.98px) {
+  body:not(.simple) { padding-bottom: 4.5rem; }
+  body.simple .sm-tabbar { display: none !important; }
+  .sm-mascot { bottom: 76px; } .sm-mascot img { width: 68px; }
+  .sm-fab-assistant { bottom: 152px; right: 18px; }
+  .sm-mascot-tip { bottom: 218px; }
+  body.simple .sm-mascot { bottom: 12px; }
+  body.simple .sm-fab-assistant { bottom: 88px; }
+  body.simple .sm-mascot-tip { bottom: 154px; }
+  .sm-section-title { font-size: 1.5rem; }
+  .sm-prog-label { font-size: 1rem; }
+  .sm-prog-ic { width: 76px; min-height: 76px; }
+  .sm-portal .material-symbols-outlined { font-size: 3.4rem; }
+  .sm-portal strong { font-size: .9rem; }
+}
+
+/* 11. JUEGO DE APPS -------------------------------------------------------- */
+.opt { text-align: left; border: 2px solid var(--bs-border-color); border-radius: 12px; padding: .85rem 1.05rem; background: var(--bs-body-bg); color: var(--bs-body-color); width: 100%; margin-bottom: .65rem; }
+.opt.correct { border-color: #2E8B57; background: rgba(46,139,87,.1); }
+.opt.wrong   { border-color: #C0392B; background: rgba(192,57,43,.1); }
+.opt:disabled { cursor: default; opacity: 1; }
+.feedback.ok { color: #2E8B57; font-weight: 700; }
+.feedback.no { color: #C0392B; font-weight: 700; }
+.score-num { font-size: 2.6rem; font-weight: 800; color: var(--sm-blue-dark); }
+.progress-bar { background: var(--sm-blue); }
