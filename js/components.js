@@ -48,7 +48,7 @@
         '</div>' +
         '<div class="collapse navbar-collapse" id="mainNav">' +
           '<ul class="navbar-nav mx-lg-auto">' + renderNav() + '</ul>' +
-          '<a class="btn btn-primary sm-contact ms-lg-3" href="#" ' + SM.abrirAttrs('Contacto', 'Comunicate con Atención al vecino al 147.') + '>CONTÁCTANOS</a>' +
+          '<a class="btn btn-primary sm-contact ms-lg-3" href="crm.html">INGRESAR</a>' +
         '</div>' +
       '</div></nav></header>';
   }

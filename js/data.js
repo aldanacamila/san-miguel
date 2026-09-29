@@ -115,6 +115,4 @@ SM.nav = [
   { t: 'Trámites y servicios', groups: [
       { items: [{ t: 'Guía de trámites', d: 'Accedé al portal general de trámites municipales.' }].concat(SM.tramites.slice(1).map(function (t) { return { t: t.t, d: t.d }; })) }
   ] },
-  { t: 'Transparencia', groups: [ { items: [{ t: 'Gobierno abierto', d: 'Accedé a información pública y de gestión.' }] } ] },
-  { t: 'Conocé San Miguel', groups: [ { items: [{ t: 'San Miguel en imágenes', d: 'Galería de fotos de actividades municipales.' }] } ] }
 ];
