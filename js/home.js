@@ -5,11 +5,6 @@
   var $ = function (id) { return document.getElementById(id); };
   var e = SM.esc, ic = SM.icon;
 
-  /* Hero (carrusel de Bootstrap) */
-  $('hero-slides').innerHTML = SM.hero.map(function (h, i) {
-    return '<div class="carousel-item' + (i === 0 ? ' active' : '') + '"><div class="sm-hero-slide">' +
-      '<div class="sm-hero-cap"><div class="fw-bold">' + e(h.e) + '</div><h2>' + e(h.h) + '</h2></div></div></div>';
-  }).join('');
 
   /* Accesos principales */
   $('grid-tramites').innerHTML = SM.tramites.map(function (t) {
