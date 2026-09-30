@@ -114,22 +114,29 @@
         '<button class="btn btn-primary btn-sm" data-action="mascota-activar">Activar</button>' +
       '</div>' +
       /* Asistente de voz */
-      '<button class="sm-fab sm-fab-assistant" data-action="asistente" aria-label="Abrir asistente de voz">' + ic('mic') + '</button>' +
-      '<div class="modal fade" id="asistenteModal" tabindex="-1" aria-label="Asistente de voz" aria-hidden="true">' +
-        '<div class="modal-dialog modal-dialog-centered" style="max-width:380px"><div class="modal-content rounded-4 text-center p-4">' +
-          '<button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Cerrar asistente"></button>' +
-          '<div class="ao-mic-wrap" id="aoMicWrap"><div class="ao-ring r1"></div><div class="ao-ring r2"></div>' +
-            '<button class="ao-mic" data-action="escuchar" aria-label="Empezar a hablar">' + ic('mic') + '</button></div>' +
-          '<p class="text-secondary small mb-0" id="aoStatus" aria-live="polite" style="min-height:1.3rem"></p>' +
-          '<div class="bg-body-tertiary rounded-3 p-3 my-3 text-start d-none" id="aoBubble" aria-live="polite">' +
-            '<small class="d-block text-secondary fw-semibold" id="aoTranscript"></small>' +
-            '<p class="mb-0 fw-semibold small" id="aoReply"></p></div>' +
-          '<div class="d-flex flex-wrap gap-2 justify-content-center">' +
-            '<button class="btn btn-sm btn-outline-secondary rounded-pill" data-action="comando" data-cmd="reclamo">Hacer un reclamo</button>' +
-            '<button class="btn btn-sm btn-outline-secondary rounded-pill" data-action="comando" data-cmd="pagar tasas">Pagar tasas</button>' +
-            '<button class="btn btn-sm btn-outline-secondary rounded-pill" data-action="comando" data-cmd="turno de salud">Turnos de salud</button>' +
-            '<button class="btn btn-sm btn-outline-secondary rounded-pill" data-action="comando" data-cmd="ayuda">¿Qué podés hacer?</button>' +
+      '<button class="sm-fab sm-fab-assistant" data-action="asistente" aria-label="Abrir asistente Miguelito">' + ic('mic') + '</button>' +
+      '<div class="modal fade" id="asistenteModal" tabindex="-1" aria-labelledby="aoTitle" aria-hidden="true">' +
+        '<div class="modal-dialog modal-dialog-centered" style="max-width:420px"><div class="modal-content rounded-4 p-3 p-sm-4">' +
+          '<div class="d-flex align-items-center gap-2 mb-3">' +
+            '<img src="assets/miguel_bot.png" alt="" width="44" height="44" class="ao-avatar">' +
+            '<div class="flex-grow-1"><strong class="d-block" id="aoTitle">Miguelito</strong>' +
+              '<small class="text-secondary" id="aoMode">Asistente virtual del municipio</small></div>' +
+            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar asistente"></button>' +
           '</div>' +
+          '<div class="ao-chat" id="aoChat" role="log" aria-live="polite" aria-label="Conversación con Miguelito"></div>' +
+          '<div class="ao-mic-wrap" id="aoMicWrap"><div class="ao-ring r1"></div><div class="ao-ring r2"></div>' +
+            '<button class="ao-mic" data-action="escuchar" aria-label="Hablar con Miguelito">' + ic('mic') + '</button></div>' +
+          '<p class="text-secondary small text-center mb-2" id="aoStatus" aria-live="polite" style="min-height:1.3rem"></p>' +
+          '<div class="d-flex flex-wrap gap-2 justify-content-center">' +
+            '<button class="btn btn-sm btn-outline-secondary rounded-pill" data-action="comando" data-cmd="Quiero sacar un turno de salud">Sacar turno de salud</button>' +
+            '<button class="btn btn-sm btn-outline-secondary rounded-pill" data-action="comando" data-cmd="¿Cuáles son los números de emergencia?">Emergencias</button>' +
+            '<button class="btn btn-sm btn-outline-secondary rounded-pill" data-action="comando" data-cmd="¿Cómo saco la licencia de conducir?">Licencia de conducir</button>' +
+            '<button class="btn btn-sm btn-outline-secondary rounded-pill" data-action="comando" data-cmd="¿Qué podés hacer?">¿Qué podés hacer?</button>' +
+          '</div>' +
+          '<form class="d-flex gap-2 mt-3" id="aoForm" autocomplete="off">' +
+            '<input class="form-control" id="aoInput" maxlength="1000" placeholder="Escribí tu consulta..." aria-label="Escribí tu consulta para Miguelito">' +
+            '<button class="btn btn-primary d-inline-flex align-items-center" id="aoSend" type="submit" aria-label="Enviar">' + ic('send') + '</button>' +
+          '</form>' +
         '</div></div></div>' +
       /* Tabbar mobile */
       '<nav class="sm-tabbar fixed-bottom d-flex d-md-none" aria-label="Navegación mobile">' +

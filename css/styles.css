@@ -215,6 +215,21 @@ body.simple .solo-normal { display: none !important; }
 .ao-mic .material-symbols-outlined { font-size: 2rem; }
 .ao-mic-wrap.listening .ao-mic { background: var(--sm-blue-dark); }
 
+/* Conversación con Miguelito */
+.ao-avatar { border-radius: 50%; background: var(--sm-card-bg); object-fit: contain; }
+.ao-chat { max-height: 45vh; overflow-y: auto; display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1rem; padding: .25rem; }
+.ao-chat:empty { display: none; }
+.ao-chat:not(:empty) + .ao-mic-wrap { width: 84px; height: 84px; margin-bottom: .5rem; }
+.ao-chat:not(:empty) + .ao-mic-wrap .ao-mic { width: 56px; height: 56px; }
+.ao-msg { max-width: 85%; padding: .55rem .8rem; border-radius: 14px; font-size: 1rem; line-height: 1.4; white-space: pre-wrap; overflow-wrap: anywhere; }
+.ao-msg a { color: inherit; text-decoration: underline; }
+.ao-msg.user { align-self: flex-end; background: var(--sm-blue); color: #fff; border-bottom-right-radius: 4px; }
+.ao-msg.bot { align-self: flex-start; background: var(--bs-tertiary-bg); color: var(--bs-body-color); border-bottom-left-radius: 4px; }
+.ao-msg.human { align-self: flex-start; background: #FFF3CD; color: #5C4500; border-bottom-left-radius: 4px; }
+.ao-who { display: block; font-size: .72rem; font-weight: 700; opacity: .8; margin-bottom: .1rem; }
+[data-contrast="high"] .ao-msg { border: 2px solid #000; }
+[data-contrast="high"] .ao-msg.bot, [data-contrast="high"] .ao-msg.human { background: #fff; color: #000; }
+
 .sm-tabbar { background: var(--bs-body-bg); border-top: 1px solid var(--bs-border-color); padding: .5rem 0 calc(.5rem + env(safe-area-inset-bottom, 0px)); z-index: 1030; }
 .sm-tabbar .tab { flex: 1; background: none; border: 0; font-size: .62rem; color: var(--bs-secondary-color); text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: .15rem; }
 .sm-tabbar .tab .material-symbols-outlined { font-size: 1.4rem; }

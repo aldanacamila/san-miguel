@@ -46,6 +46,13 @@ SM.icon = function (name, extraClass) {
   return '<span class="material-symbols-outlined ' + (extraClass || '') + '" aria-hidden="true">' + name + '</span>';
 };
 
+/** Service worker: hace el sitio instalable como app (PWA / APK). Ver sw.js. */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function () { /* sin PWA, el sitio funciona igual */ });
+  });
+}
+
 /** Atributos data-* que abren la página de detalle (los resuelve components.js). */
 SM.abrirAttrs = function (titulo, texto) {
   return 'data-action="abrir-tramite" data-titulo="' + SM.esc(titulo) + '" data-texto="' + SM.esc(texto) + '"';
